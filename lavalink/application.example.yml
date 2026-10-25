@@ -1,0 +1,61 @@
+server:
+  port: 2333
+  address: 127.0.0.1   # solo accesible desde esta máquina
+lavalink:
+  pluginsDir: ./plugins
+  server:
+    # yt-dlp tarda ~8 s la primera vez que prepara una canción de YouTube (el resolvedor local espera a que termine)
+    timeouts:
+      connectTimeoutMs: 5000
+      connectionRequestTimeoutMs: 5000
+      socketTimeoutMs: 30000
+    password: "CAMBIA_ESTA_CLAVE"  # debe coincidir con LAVALINK_PASSWORD en .env
+    sources:
+      youtube: false      # lo sustituye el plugin youtube-source
+      bandcamp: true
+      soundcloud: true
+      twitch: false
+      vimeo: true
+      http: true
+      local: false
+    bufferDurationMs: 400
+    frameBufferDurationMs: 5000
+    youtubePlaylistLoadLimit: 6
+    playerUpdateInterval: 5
+    youtubeSearchEnabled: true
+    soundcloudSearchEnabled: true
+    gc-warnings: true
+plugins:
+  youtube:
+    enabled: true
+    allowSearch: true
+    allowDirectVideoIds: true
+    allowDirectPlaylistIds: true
+    # Con sesión iniciada (OAuth) YouTube deja reproducir desde un servidor; el cliente TV es el que usa ese inicio de sesión
+    clients: ["TVHTML5_SIMPLY", "TV", "MUSIC", "WEB", "MWEB", "WEBEMBEDDED", "ANDROID_VR"]
+    oauth:
+      enabled: true
+      # Sesión de la cuenta secundaria de Google (no compartir)
+      refreshToken: "TU_REFRESH_TOKEN_OAUTH"
+      skipInitialization: true
+  lavasrc:
+    providers:
+      - 'ytsearch:"%ISRC%"'
+      - "ytsearch:%QUERY%"
+      - "scsearch:%QUERY%"
+    sources:
+      spotify: true
+      applemusic: false
+      deezer: false
+      yandexmusic: false
+      flowerytts: false
+      youtube: false
+    spotify:
+      preferAnonymousToken: true
+      countryCode: "US"
+      playlistLoadLimit: 6
+      albumLoadLimit: 6
+logging:
+  level:
+    root: INFO
+    lavalink: INFO

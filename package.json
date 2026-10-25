@@ -1,0 +1,14 @@
+{
+  "name": "mfc-music",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Bot de música de MAFIA CHINA CTR: 1 bot principal + bots de apoyo (uno por canal de voz) con Lavalink",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js"
+  },
+  "dependencies": {
+    "discord.js": "^14.27.0",
+    "lavalink-client": "^2.11.0"
+  }
+}

@@ -1,0 +1,16 @@
+# Secretos (el repo es público)
+.env
+secrets/
+warp/
+lavalink/application.yml
+
+# Binarios / dependencias pesadas (se descargan en la VPS)
+node_modules/
+bin/
+runtime/
+runtime-node/
+pot-server/
+lavalink/Lavalink.jar
+lavalink/plugins/
+cache/
+*.log
